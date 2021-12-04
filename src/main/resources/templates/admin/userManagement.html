@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USER MANAGEMENT</title>
+</head>
+<body>
+    <br><br>
+    <h3 align="center">USER MANAGEMENT</h3>
+    <br>
+    <table align="center" border="1">
+
+        <tr>
+            <th width="50">INDEX</th>
+            <th width="25">ID</th>
+            <th width="150">USERNAME</th>
+            <th width="150">PASSWORD</th>
+            <th width="150">E-MAIL</th>
+            <th width="150">NAME</th>
+            <th width="150">LASTNAME</th>
+            <th width="150">ROLES</th>
+            <th width="75">EDIT</th>
+            <th width="75">DELETE</th>
+        </tr>
+
+        <tr th:each="user, state : ${users}">
+            <td th:text="${state.count}">INDEX</td>
+            <td th:text="${user.id}">ID</td>
+            <td align="right" th:text="${user.userName}">USERNAME</td>
+            <td align="center"> * * * </td>
+            <td align="left" th:text="${user.email}">E-MAIL</td>
+            <td align="left" th:text="${user.name}">NAME</td>
+            <td align="left" th:text="${user.lastname}">LASTNAME</td>
+            <td align="left"> <span th:each="role:${user.roleSet}"> <span th:text="${role.roleName}"></span><br></span> </td>
+            <td align="center">
+                <form th:method="GET" th:action="@{/admin/editUser/{id} (id=${user.id})}">
+                    <input type="submit" value="EDIT">
+                </form>
+            </td>
+            <td align="center">
+                <form th:method="DELETE" th:action="@{/admin/delete/{id} (id=${user.id})}">
+                    <input type="submit" value="DELETE">
+                </form>
+            </td>
+        </tr>
+
+        <tr>
+            <form th:method="POST" th:action="@{/admin}" th:object="${newUser}">
+                <td colspan="2" align="right">CREATE NEW USER:</td>
+                <td><input type="text" th:field="*{userName}"/></td>
+                <td><input type="text" th:field="*{password}"/></td>
+                <td><input type="text" th:field="*{email}"/></td>
+                <td><input type="text" th:field="*{name}"/></td>
+                <td><input type="text" th:field="*{lastname}"/></td>
+                <td><span th:each="role:${roles}"><input type="checkbox" name=roleId th:value="${role.id}"/><label th:utext="${role.roleName}"></label><br></span></td>
+                <td colspan="2" align="center"><input type="submit" value="CREATE"/></td>
+            </form>
+        </tr>
+
+    </table>
+
+    <br><br>
+    <h3 align="center"><a href="/user">YOUR PERSONAL PAGE HERE</a></h3>
+    <br><br>
+    <h3 align="center"><a href="/logout">U CAN LOGOUT HERE!!!</a></h3>
+</body>
+</html>
