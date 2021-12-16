@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.github</groupId>
-	<artifactId>Task_3.1.1</artifactId>
+	<artifactId>Task_3.1.2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Task_3.1.1</name>
+	<name>Task_3.1.2</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
@@ -58,6 +58,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>5.1.3</version>
 		</dependency>
 	</dependencies>
 
