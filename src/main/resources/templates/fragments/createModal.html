@@ -34,9 +34,13 @@
                         </tr>
                         <tr>
                             <th class="text-end">ROLES :</th>
-                            <td><span th:each="role:${roles}">
-                                <input type="checkbox" name=roleId th:value="${role.id}"/>
-                                <label th:utext="${role.roleName}"></label><br></span>
+                            <td>
+                                <select class="form-select" name="roleId" multiple>
+                                    <option th:each="role:${roles}"
+                                            th:value="${role.id}"
+                                            th:utext="${role.roleName}">
+                                    </option>
+                                </select>
                             </td>
                         </tr>
                     </table>
